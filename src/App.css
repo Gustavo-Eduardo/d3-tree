@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+.selected {
+  fill: aqua;
+  stroke: aqua;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,20 +1,10 @@
 {
     "configurations": [
-        {
-            "name": "Attach to Edge",
-            "port": 2000,
-            "request": "attach",
-            "type": "msedge",
-            "webRoot": "${workspaceFolder}"
-        },
-        
-        
     {
-        "name": "Attach to Chrome",
-        "host": "26.67.8.80",
-        "port": 9222,
-        "request": "attach",
-        "type": "chrome",
+        "name": "Attach to Edge",
+        "url": "http://localhost:2000",
+        "request": "launch",
+        "type": "msedge",
         "webRoot": "${workspaceFolder}"
     }
     ]
