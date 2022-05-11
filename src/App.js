@@ -367,9 +367,13 @@ const treeData = {
 
 function App() {
   const [tree, setTree] = useState(treeData);
+  const [buttonFlag, setFlag] = useState(false)
   const svgRef = React.useRef(null);
 
-  var width, height;
+  var width, height;  
+  const handleClick = () => {
+      setFlag(!buttonFlag);
+  }
 
   useEffect(() => {
 
@@ -755,7 +759,12 @@ function App() {
     root.y0 = 0;
 
     // Collapse after the second name
-    root.children.forEach(collapse);
+    if(buttonFlag){
+      root.children.forEach(expand)
+      // setFlag(false)
+    } else {
+      root.children.forEach(collapse);
+    }
 
     update(root);
 
@@ -767,6 +776,15 @@ function App() {
         d.children = null
       }
     }
+
+    function expand(d) {      
+      if(d._children) {
+      d.children = d._children
+        d.children.forEach(expand)
+        d._children = null
+      }
+    }
+
     function update(source) {
 
       // Assigns the x and y position for the nodes
@@ -916,10 +934,13 @@ function App() {
       }
     }
 
-  }, [tree])
+  }, [tree, buttonFlag])
 
   return (
-    <svg ref={svgRef} width={width} height={height} />
+    <div>
+      <svg ref={svgRef} width={width} height={height} />    
+      <button onClick={handleClick}> aaa </button>
+    </div>
   )
 }
 
